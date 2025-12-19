@@ -1,4 +1,4 @@
-from stats import number_of_words, number_of_characters
+from stats import *
 
 def get_book_text(filepath):
     file_contents = ""
@@ -6,15 +6,15 @@ def get_book_text(filepath):
         file_contents = f.read()
     return file_contents
 
-
-
 def main():
+    filepath = "books/frankenstein.txt"
     book = get_book_text("books/frankenstein.txt")
 
-    print(f"Found {number_of_words(book)} total words")
-
     bookChars = number_of_characters(book)
-    print(bookChars)
 
+
+    dic = sorted_char_dic(bookChars)
+    dic.sort(reverse=True, key=sort_on)
+    toString(dic, filepath, book)
 if __name__ == "__main__":
     main()
